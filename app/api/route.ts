@@ -15,16 +15,5 @@ export function GET(request: Request) {
   console.log("Location info", geo);
   console.log("All headers", allHeaders);
 
-  // Send html text to the client
-  return new Response(
-    `<html><body><h1>Hello, World!</h1>
-    <p>Location: ${geo.city}, ${geo.country}</p>
-    <p>Headers: ${JSON.stringify(allHeaders)}</p>
-    </body></html>`,
-    {
-      headers: { "Content-Type": "text/html" },
-    }
-  );
-
   return NextResponse.json({ geo, allHeaders });
 }
