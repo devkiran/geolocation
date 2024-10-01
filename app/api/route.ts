@@ -1,10 +1,13 @@
 import { geolocation } from "@vercel/functions";
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 export function GET(request: Request) {
-  const response = geolocation(request);
+  const headersList = headers();
+  const geo = geolocation(request);
 
-  console.log("Location info", response);
+  console.log("Location info", geo);
+  console.log("Headers", headersList);
 
-  return NextResponse.json(response);
+  return NextResponse.json({ geo, headersList });
 }
