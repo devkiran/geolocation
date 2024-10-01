@@ -9,5 +9,5 @@ export function GET(request: Request) {
   console.log("Location info", geo);
   console.log("Headers", headersList);
 
-  return NextResponse.json({ geo, headersList });
+  return NextResponse.json({ geo });
 }
