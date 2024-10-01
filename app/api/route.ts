@@ -3,11 +3,13 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 
 export function GET(request: Request) {
-  const headersList = headers();
   const geo = geolocation(request);
 
-  console.log("Location info", geo);
-  console.log("Headers", headersList);
+  const headersList = headers();
+  const allHeaders = headersList.entries();
 
-  return NextResponse.json({ geo });
+  console.log("Location info", geo);
+  console.log("All headers", allHeaders);
+
+  return NextResponse.json({ geo, allHeaders });
 }
