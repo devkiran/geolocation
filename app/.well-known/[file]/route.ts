@@ -1,0 +1,21 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: { file: string } }
+) {
+  const { file } = params;
+
+  return NextResponse.json([
+    {
+      relation: ["delegate_permission/common.handle_all_urls"],
+      target: {
+        namespace: "android_app",
+        package_name: "com.kiran.mobileapp",
+        sha256_cert_fingerprints: [
+          "5C:CF:22:56:0B:0F:F3:AB:CC:EC:D7:62:C8:69:46:09:30:89:8F:C4:43:6B:E5:74:2E:C6:F1:5C:8B:C0:77:88",
+        ],
+      },
+    },
+  ]);
+}
