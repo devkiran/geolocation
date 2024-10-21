@@ -9,13 +9,24 @@ const keysMap = {
   home: "ecomapp://",
 } as const;
 
+const fallbackUrlAndroid =
+  "https://play.google.com/store/apps/details?id=com.openai.chatgpt&hl=en_IN";
+
+const fallbackUrlIOS = "https://apps.apple.com/us/app/chatgpt/id6448311069";
+
 export default function Page({ params }: { params: { shortKey: string } }) {
   const fallbackFunction = () => {
     if (document.hidden) {
       return;
     }
 
-    window.location.replace("https://google.com");
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+      window.location.replace(fallbackUrlIOS);
+    } else {
+      window.location.replace(fallbackUrlAndroid);
+    }
   };
 
   const redirectFunction = () => {
