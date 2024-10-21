@@ -2,6 +2,13 @@
 
 import { useEffect } from "react";
 
+const keysMap = {
+  "1": "ecomapp://products/details?id=1",
+  "2": "ecomapp://products/details?id=2",
+  products: "ecomapp://products",
+  home: "ecomapp://",
+} as const;
+
 export default function Page({ params }: { params: { shortKey: string } }) {
   const fallbackFunction = () => {
     if (document.hidden) {
@@ -12,7 +19,7 @@ export default function Page({ params }: { params: { shortKey: string } }) {
   };
 
   const redirectFunction = () => {
-    window.location.replace("ecomapp://products/details?id=1");
+    window.location.replace(keysMap[params.shortKey as keyof typeof keysMap]);
   };
 
   useEffect(() => {
@@ -23,5 +30,5 @@ export default function Page({ params }: { params: { shortKey: string } }) {
     return () => clearTimeout(fallbackTimer);
   }, []);
 
-  return <>Redirecting to {params.shortKey}...</>;
+  return <></>;
 }
