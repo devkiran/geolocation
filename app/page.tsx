@@ -23,6 +23,12 @@ export default function Home() {
           ecomapp://products/details?id=1
         </a>
       </li>
+
+      <li>
+        <a href="https://mobile-app-kiran.vercel.app/1">
+          https://mobile-app-kiran.vercel.app/1
+        </a>
+      </li>
     </ul>
   );
 }
