@@ -15,31 +15,29 @@ const fallbackUrlAndroid =
 const fallbackUrlIOS = "https://apps.apple.com/us/app/chatgpt/id6448311069";
 
 export default function Page({ params }: { params: { shortKey: string } }) {
-  const fallbackFunction = () => {
-    if (document.hidden) {
-      return;
-    }
+  // const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  // const fallbackFunction = () => {
+  //   if (document.hidden) {
+  //     return;
+  //   }
 
-    if (isIOS) {
-      window.location.replace(fallbackUrlIOS);
-    } else {
-      window.location.replace(fallbackUrlAndroid);
-    }
-  };
+  //   if (isIOS) {
+  //     window.location.replace(fallbackUrlIOS);
+  //   } else {
+  //     window.location.replace(fallbackUrlAndroid);
+  //   }
+  // };
 
-  const redirectFunction = () => {
-    window.location.replace(keysMap[params.shortKey as keyof typeof keysMap]);
-  };
+  // const redirectFunction = () => {
+  //   window.location.replace(keysMap[params.shortKey as keyof typeof keysMap]);
+  // };
 
-  useEffect(() => {
-    const fallbackTimer = setTimeout(fallbackFunction, 500);
+  // useEffect(() => {
+  //   const fallbackTimer = setTimeout(fallbackFunction, 500);
+  //   redirectFunction();
+  //   return () => clearTimeout(fallbackTimer);
+  // }, []);
 
-    redirectFunction();
-
-    return () => clearTimeout(fallbackTimer);
-  }, []);
-
-  return <></>;
+  return <h1>{params.shortKey}</h1>;
 }
